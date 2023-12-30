@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+</head>
+<body>
+  <label>them ma sinh vien</label>
+  <input id="maSinhVien" type="text" />
+
+  <label>them Ten</label>
+  <input id="tenSinhVien" type="text" />
+
+  <label>diem</label>
+  <input id="diem" type="text" />
+
+  <button onclick="saveSinhVien()">Them sinh sinh</button>
+</body>
+<script>
+    function saveSinhVien(){
+        var maSinhVien = document.getElementById("maSinhVien").value;
+        var tenSinhVien= document.getElementById("tenSinhVien").value;
+        var diem = document.getElementById("diem").value;
+
+        $.ajax({
+            url: 'sinh-vien/save',
+            type: "POST",
+            contentType: 'application/json',
+            data: JSON.stringify({
+                maSinhVien: maSinhVien,
+                tenSinhVien: tenSinhVien,
+                diem:diem
+            }),
+            success: function (data) {
+                if (data.status=='That bai') {
+                    var loi = data.error;
+                    alert(loi)
+                } else {
+                    alert("Thêm thành công");
+                    window.location.href = "/quan-li-sinh-vien";
+                }
+            }
+        })
+    }
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+</head>
+<body>
+<h1>Quan lý Sinh Viên</h1>
+
+<a href="http://localhost:8043/them-sinh-vien">them sinh vien</a>
+
+
+<hr>
+ <table>
+<thead>
+ <tr>
+     <th> STT</th>
+     <th> Ma Sinh Vien</th>
+     <th> Ten Sinh Vien</th>
+     <th> Diem</th>
+ </tr>
+
+</thead>
+     <tbody>
+     <tr th:each="item,index:${listSinhVien}">
+         <td th:text="${index.index+1}"></td>
+         <td th:text="${item.maSinhVien}"></td>
+         <td th:text="${item.tenSinhVien}"></td>
+         <td th:text="${item.diem}"></td>
+     </tr>
+     </tbody>
+ </table>
+
+
+
+</body>
+<script>
+    // function viewThemSinhVien(){
+    //     $.ajax({
+    //         url: 'localhost:8043/them-sinh-vien',
+    //         type: "GET",
+    //         contentType: 'application/json',
+    //         data: JSON.stringify({
+    //             name: nameCategory
+    //         }),
+    //         success: function (data) {
+    //             if (data == false) {
+    //                 alert("Lỗi thêm thất bại")
+    //             } else {
+    //                 swal("Thêm Thành Công", "", "success").then(function (e) {
+    //                     if (e) window.location = "/category-properties"
+    //                 })
+    //             }
+    //         }
+    //     })
+    // }
+</script>
+</html>
